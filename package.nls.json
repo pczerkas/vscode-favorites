@@ -7,6 +7,7 @@
   "command.favorites.movetobottom": "Move to Bottom",
   "command.favorites.refresh": "Refresh",
   "command.favorites.sort": "Toggle Sort",
+  "command.favorites.addCurrentFile": "Add Current File",
   "command.favorites.revealInOS.mac": "Reveal in Finder",
   "command.favorites.revealInOS.windows": "Reveal in File Explorer",
   "command.favorites.revealInOS.other": "Open Containing Folder",

@@ -3,11 +3,12 @@ import * as vscode from 'vscode'
 import { Resource, FavoritesProvider } from '../provider/FavoritesProvider'
 import configMgr from '../helper/configMgr'
 import { getCurrentResources, replaceArrayElements } from '../helper/util'
+import { DEFAULT_GROUP } from '../enum'
 
 export function moveUp(favoritesProvider: FavoritesProvider) {
-  return vscode.commands.registerCommand('favorites.moveUp', async function(value: Resource) {
+  return vscode.commands.registerCommand('favorites.moveUp', async function (value: Resource) {
     const config = vscode.workspace.getConfiguration('favorites')
-    const currentGroup = configMgr.get('currentGroup') as string
+    const currentGroup = (configMgr.get('currentGroup') as string) || DEFAULT_GROUP
 
     const items = await getCurrentResources()
     const filteredArray: {
@@ -27,8 +28,8 @@ export function moveUp(favoritesProvider: FavoritesProvider) {
 
     if (currentIndex === filteredArray[0].previousIndex) {
       return
-    }else{
-      var previousIndex = filteredArray[targetIndexOfFiltered-1].previousIndex
+    } else {
+      var previousIndex = filteredArray[targetIndexOfFiltered - 1].previousIndex
     }
 
     let resources = replaceArrayElements(items, currentIndex, previousIndex)

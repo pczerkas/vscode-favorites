@@ -1,5 +1,6 @@
 export { addToFavorites } from './addToFavorites'
 export { deleteFavorite } from './deleteFavorite'
+export { addCurrentFile } from './addCurrentFile'
 export { moveUp } from './moveUp'
 export { moveDown } from './moveDown'
 export { moveToTop } from './moveToTop'

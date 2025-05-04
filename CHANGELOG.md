@@ -1,5 +1,10 @@
 <!--Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.-->
 
+### 2025-04-29
+
+1. Support `currentFavoritesHookPath` configuration
+2. Add button (icon) to add current file to favorites
+
 ### 2021-10-19
 
 1. Support group feature (by [@s19514tt](https://github.com/s19514tt))

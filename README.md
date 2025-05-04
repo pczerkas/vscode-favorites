@@ -7,14 +7,14 @@
 
 An extension that lets the developer mark resources (files or folders) as favorites, so they can be easily accessed.
 
-![](https://raw.githubusercontent.com/leftstick/vscode-favorites/master/images/preview.gif)
+![](https://raw.githubusercontent.com/pczerkas/vscode-favorites/master/images/preview.gif)
 
 ## Install
 
 Launch VS Code Quick Open (`cmd`/`ctrl` + `p`), paste the following command, and press Enter.
 
 ```
-ext install howardzuo.vscode-favorites
+ext install PCODE-pl.vscode-favorites-plus
 ```
 
 ## Usage
@@ -32,6 +32,7 @@ Your favorites are listed in a separate view and can be quickly accessed from th
     "favorites.saveSeparated": false // whether to use an extra config file
     "favorites.groups": ["Default"], // the groups you have created
     "favorites.currentGroup": "Default" // determine the current using group
+    "favorites.currentFavoritesHookPath": "", // path to cli command to run when current favorites change
 }
 ```
 
@@ -39,14 +40,14 @@ Your favorites are listed in a separate view and can be quickly accessed from th
 
 ## Changelog
 
-[Changelog on Marketplace](https://marketplace.visualstudio.com/items/howardzuo.vscode-favorites/changelog)
+[Changelog on Marketplace](https://marketplace.visualstudio.com/items/PCODE-pl.vscode-favorites-plus/changelog)
 
 ## LICENSE
 
-[GPL v3 License](https://raw.githubusercontent.com/leftstick/vscode-favorites/master/LICENSE)
+[GPL v3 License](https://raw.githubusercontent.com/pczerkas/vscode-favorites/master/LICENSE)
 
-[vs-url]: https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-favorites
-[vs-image]: https://img.shields.io/visual-studio-marketplace/v/howardzuo.vscode-favorites
-[install-url]: https://img.shields.io/visual-studio-marketplace/i/howardzuo.vscode-favorites
-[rate-url]: https://img.shields.io/visual-studio-marketplace/r/howardzuo.vscode-favorites
-[license-url]: https://img.shields.io/github/license/leftstick/vscode-favorites
+[vs-url]: https://marketplace.visualstudio.com/items?itemName=PCODE-pl.vscode-favorites-plus
+[vs-image]: https://img.shields.io/visual-studio-marketplace/v/PCODE-pl.vscode-favorites-plus
+[install-url]: https://img.shields.io/visual-studio-marketplace/i/PCODE-pl.vscode-favorites-plus
+[rate-url]: https://img.shields.io/visual-studio-marketplace/r/PCODE-pl.vscode-favorites-plus
+[license-url]: https://img.shields.io/github/license/pczerkas/vscode-favorites

@@ -1,9 +1,10 @@
 {
-  "name": "vscode-favorites",
-  "displayName": "favorites",
-  "description": "Mark resources (files or folders, local and remote) as favorites, so they can be easily accessed.",
-  "version": "1.11.0",
-  "publisher": "howardzuo",
+  "name": "vscode-favorites-plus",
+  "displayName": "Favorites Plus",
+  "description": "Mark resources (files or folders, local and remote) as favorites, so they can be easily accessed (fork with additional features).",
+  "version": "1.14.1",
+  "author": "howardzuo",
+  "publisher": "PCODE-pl",
   "engines": {
     "vscode": "^1.68.0"
   },
@@ -68,8 +69,13 @@
         },
         "favorites.saveSeparated": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Whether to save marked resources in separate .vscfavoriterc"
+        },
+        "favorites.currentFavoritesHookPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to cli command to run when current favorites change. Relative to workspace root or absolute path. Arguments passed to command: [favorites file name], [current group name]."
         }
       }
     },
@@ -121,6 +127,11 @@
         },
         {
           "command": "favorites.nav.sort",
+          "when": "view in ext:allFavoriteViews",
+          "group": "navigation"
+        },
+        {
+          "command": "favorites.nav.addCurrentFile",
           "when": "view in ext:allFavoriteViews",
           "group": "navigation"
         },
@@ -246,6 +257,14 @@
         "icon": {
           "dark": "images/sort_black.svg",
           "light": "images/sort_light.svg"
+        }
+      },
+      {
+        "command": "favorites.nav.addCurrentFile",
+        "title": "%command.favorites.addCurrentFile%",
+        "icon": {
+          "dark": "images/add_file_black.svg",
+          "light": "images/add_file_light.svg"
         }
       },
       {

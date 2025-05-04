@@ -3,7 +3,7 @@ import * as vscode from 'vscode'
 import { Resource } from '../provider/FavoritesProvider'
 import configMgr from '../helper/configMgr'
 import { getCurrentResources, pathResolve } from '../helper/util'
-import { ItemInSettingsJson } from '../model'
+import { DEFAULT_GROUP } from '../enum'
 
 export function deleteFavorite() {
   return vscode.commands.registerCommand('favorites.deleteFavorite', (value?: Resource | vscode.Uri) => {
@@ -21,13 +21,13 @@ export function deleteFavorite() {
     if (uri.scheme === 'file') {
       const fsPath = (<Resource>value).value || (<vscode.Uri>value).fsPath
 
-      const currentGroup = configMgr.get('currentGroup')
+      const currentGroup = (configMgr.get('currentGroup') as string) || DEFAULT_GROUP
 
       configMgr
         .save(
           'resources',
           previousResources.filter((r) => {
-            if ((r.filePath !== fsPath && pathResolve(r.filePath) !== fsPath )|| r.group !== currentGroup) {
+            if ((r.filePath !== fsPath && pathResolve(r.filePath) !== fsPath) || r.group !== currentGroup) {
               return true
             }
             return false

@@ -3,6 +3,8 @@
 import * as vscode from 'vscode'
 import { FavoritesProvider } from './provider/FavoritesProvider'
 import configMgr from './helper/configMgr'
+import { DEFAULT_GROUP } from './enum'
+import currentFavoritesHook from './helper/currentFavoritesHook'
 
 import {
   addToFavorites,
@@ -14,6 +16,7 @@ import {
   moveToBottom,
   refresh,
   toggleSort,
+  addCurrentFile,
   changeGroup,
   revealInOS_mac,
   revealInOS_windows,
@@ -33,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.commands.executeCommand('setContext', 'ext:allFavoriteViews', ['favorites', 'favorites-full-view'])
 
   configMgr.onConfigChange(() => {
+    currentFavoritesHook.run()
     favoritesProvider.refresh()
   })
 
@@ -44,13 +48,14 @@ export function activate(context: vscode.ExtensionContext) {
     showCollapseAll: true,
   })
 
-  const currentGroup = configMgr.get('currentGroup')
+  const currentGroup = (configMgr.get('currentGroup') as string) || DEFAULT_GROUP
   tree.message = `Current Group: ${currentGroup}`
 
   vscode.workspace.onDidChangeConfiguration(
     () => {
-      const currentGroup = configMgr.get('currentGroup')
+      const currentGroup = (configMgr.get('currentGroup') as string) || DEFAULT_GROUP
       tree.message = `Current Group: ${currentGroup}`
+      currentFavoritesHook.resolvePath()
       favoritesProvider.refresh()
     },
     this,
@@ -70,10 +75,11 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(moveToTop(favoritesProvider))
   context.subscriptions.push(moveToBottom(favoritesProvider))
   context.subscriptions.push(refresh(favoritesProvider))
+  context.subscriptions.push(addCurrentFile())
   context.subscriptions.push(toggleSort(favoritesProvider))
   context.subscriptions.push(changeGroup(favoritesProvider))
   context.subscriptions.push(addNewGroup(favoritesProvider))
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
