@@ -2,7 +2,7 @@
   "name": "vscode-favorites-plus",
   "displayName": "Favorites Plus",
   "description": "Mark resources (files or folders, local and remote) as favorites, so they can be easily accessed (fork with additional features).",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "author": "howardzuo",
   "publisher": "PCODE-pl",
   "engines": {
@@ -20,13 +20,13 @@
   ],
   "icon": "images/favorites.png",
   "bugs": {
-    "url": "https://github.com/leftstick/vscode-favorites/issues",
+    "url": "https://github.com/pczerkas/vscode-favorites/issues",
     "email": "leftstick@qq.com"
   },
-  "homepage": "https://github.com/leftstick/vscode-favorites/blob/master/README.md",
+  "homepage": "https://github.com/pczerkas/vscode-favorites/blob/master/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leftstick/vscode-favorites.git"
+    "url": "https://github.com/pczerkas/vscode-favorites.git"
   },
   "activationEvents": [
     "onCommand:favorites.addToFavorites",
